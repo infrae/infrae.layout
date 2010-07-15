@@ -9,21 +9,20 @@ and work the same way, with some additions.
 API
 ===
 
-You can define a *Layout* that are after used by a *Page*. A *Page* is
-basically a view and behave the same way. But before rendering it
-self, it look for a *Layout* to include its content in it.
+You can define a *Layout* that will be used by a *Page*. A *Page* is
+a view and behave the same way. A page will look for Layout and will
+render inside it.
 
-Both *Page* and *Layout* can be rendered by either by a ``render``
-method, either by an associated template, exactly like a Grok view.
+Both *Page* and *Layout* can be rendered by either a ``render``
+method, or by an associated template, exactly like a Grok view.
 
-A *Layout* is found by adapting the request and the content you are
-on: you can register layouts for your skin, and after for a specific
-content.
+A *Layout* is found by adapting the request and the content:
+you can register layouts for your skin, then for a specific content.
 
 If this is not sufficient, a page can use the Grok directive
 ``layout`` to directly specify its type of Layout to use. While
-defining your layout, you can use the same directive to declare this
-layout belongs to this type. For instance if you have a skin
+defining your layout, you can use the same directive to declare which
+layout a type belongs to. For instance if you have a skin
 ``ICorpSkin``::
 
 
@@ -46,7 +45,7 @@ layout belongs to this type. For instance if you have a skin
          return self.context.title()
 
 
-And now if on the same content you want an edition layout for instance::
+Now if on the same content you want an edition layout for instance::
 
    class IEditionLayout(ILayout)
        """Layout to edit content
@@ -65,10 +64,10 @@ And now if on the same content you want an edition layout for instance::
            return self.context.title()
 
 
-If that modularity is not enough for your application, you can write
-an adapter on the request and your content that provides
-``ILayoutFactory``, where you can yourself select the layout you want,
-with the criteria you wish.
+If the above mecanism is not flexible enough for your application, you can
+write an adapter on the request and your content that provides
+``ILayoutFactory``.
+The adapter will allow you to code the logic to select any layout you want.
 
 
 .. _megrok.layout: http://pypi.python.org/pypi/megrok.layout
