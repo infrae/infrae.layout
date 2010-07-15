@@ -6,13 +6,15 @@ infrae.layout
 existing defined layout in Zope 2. It is similar to `megrok.layout`_,
 and work the same way, with some additions.
 
-
 API
 ===
 
 You can define a *Layout* that are after used by a *Page*. A *Page* is
 basically a view and behave the same way. But before rendering it
 self, it look for a *Layout* to include its content in it.
+
+Both *Page* and *Layout* can be rendered by either by a ``render``
+method, either by an associated template, exactly like a Grok view.
 
 A *Layout* is found by adapting the request and the content you are
 on: you can register layouts for your skin, and after for a specific
@@ -21,7 +23,8 @@ content.
 If this is not sufficient, a page can use the Grok directive
 ``layout`` to directly specify its type of Layout to use. While
 defining your layout, you can use the same directive to declare this
-layout belongs to this type::
+layout belongs to this type. For instance if you have a skin
+``ICorpSkin``::
 
 
   from infae.layout import layout, Layout, ILayout, Page
