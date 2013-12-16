@@ -6,6 +6,11 @@ infrae.layout
 existing defined layout in Zope 2. It is similar to `megrok.layout`_,
 and work the same way, with some additions.
 
+.. note::
+
+    This extension have been refactored into
+    ``grokcore.layout``. Please have a look at it and use it instead.
+
 API
 ===
 
@@ -69,5 +74,11 @@ write an adapter on the request and your content that provides
 ``ILayoutFactory``.
 The adapter will allow you to code the logic to select any layout you want.
 
+
+Code repository
+===============
+
+You can find the source code for this extension in Git:
+https://github.com/infrae/infrae.layout
 
 .. _megrok.layout: http://pypi.python.org/pypi/megrok.layout
